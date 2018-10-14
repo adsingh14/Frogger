@@ -52,13 +52,35 @@ class Hero {
     this.step = 101;
     this.jump = 83;
     this.startX = this.step * 2;
-    this.startY = (this.jump * 5) - 40;
+    this.startY = (this.jump * 4) + 50;
     this.x = this.startX;
     this.y = this.startY;
   }
 
   /**
-   *  @description renders character's image
+   *  @description Check collision
+   */
+  update() {
+      for (let enemy of allEnemies) {
+          // Check if player's x & y collides with enemy
+          if(this.y === enemy.y && (enemy.x + enemy.step/2 > this.x && enemy.x < this.step/2 + this.x)) {
+              this.reset();
+        }
+      }
+  }
+
+  /**
+   *  @description Reset hero position on collision
+   */
+  reset() {
+      this.x = this.startX;
+      this.y = this.startY;
+  }
+
+
+
+  /**
+   *  @description render character's image
    */
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -106,7 +128,7 @@ class Hero {
 const player = new Hero();
 const bug1 = new Enemy(-101, 0, 200);
 const bug2 = new Enemy(-101, 83, 250);
-const bug3 = new Enemy(-(101 * 3), (83 * 2), 400);
+const bug3 = new Enemy(-(101 * 3), (83 * 1), 400);
 const allEnemies = [];
 allEnemies.push(bug1,bug2,bug3);
 
