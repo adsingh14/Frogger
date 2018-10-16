@@ -25,8 +25,3 @@ This game is created via Udacity [frontend-nanodegree-arcade-game](https://githu
 ### License
 
 MIT - https://github.com/adsingh14/Frogger/blob/master/LICENSE.txt
-
-
-### Stats
-
-[![GitHub tag](https://img.shields.io/github/tag/expressjs/express.svg)](https://github.com/adsingh14/Frogger)
