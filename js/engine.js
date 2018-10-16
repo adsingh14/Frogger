@@ -18,14 +18,22 @@ var Engine = (function(global) {
      * create the canvas element, grab the 2D context for that canvas
      * set the canvas elements height/width and add it to the DOM.
      */
+     // @param {number} id - to handle the cancelAnimationFrame()
     var doc = global.document,
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
-        lastTime;
+        lastTime,
+        id;
+
+    // @description Show modal on Game Over with win/lose status
+
+    const modal__body = document.querySelector('.modal__body'),
+    btn__replay = document.querySelector('.btn__replay');
 
     canvas.width = 505;
     canvas.height = 606;
+
     doc.body.appendChild(canvas);
 
     /* This function serves as the kickoff point for the game loop itself
@@ -55,7 +63,19 @@ var Engine = (function(global) {
         /* Use the browser's requestAnimationFrame function to call this
          * function again as soon as the browser is able to draw another frame.
          */
-        win.requestAnimationFrame(main);
+        if (player.playerWins === true) {
+            win.cancelAnimationFrame(id);
+            modal__body.classList.toggle('hide');
+        }
+        else {
+            id = win.requestAnimationFrame(main);
+        }
+
+        // Modal Buttons action
+        btn__replay.addEventListener('click', function(){
+            modal__body.classList.add('hide');
+            win.location.reload();
+        });
     }
 
     /* This function does some initial setup that should only occur once,
