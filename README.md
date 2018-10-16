@@ -22,6 +22,12 @@ This game is created via Udacity [frontend-nanodegree-arcade-game](https://githu
 - Run your arcade game by opening `index.html`.
 
 
+### How to Play
+
+1. Use Arrow Keys to move the character.
+2. Avoid collision with bugs.
+3. Win the game by crossing the road.
+
 ### License
 
 MIT - https://github.com/adsingh14/Frogger/blob/master/LICENSE.txt
